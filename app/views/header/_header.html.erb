@@ -69,7 +69,7 @@
           tabindex="-1">
             <!-- Active: "bg-gray-100", Not Active: "" -->
             <% if user_signed_in? %>
-              <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Log out</a>
+              <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "block px-4 py-2 text-sm text-gray-700", role:"menuitem", tabindex: "-1" %>
             <% else %>
               <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Log in</a>
               <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign up</a>
