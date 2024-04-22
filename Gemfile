@@ -6,17 +6,27 @@ ruby "3.1.3"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "devise", "~> 4.9"
+
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
 gem "importmap-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Use OAuth for Google as log-in option
+gem "omniauth-google-oauth2", "~> 1.1", ">= 1.1.1"
+gem "omniauth-rails_csrf_protection"
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
+
+gem "rack"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8", ">= 7.0.8.1"
@@ -71,4 +81,3 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-gem "devise", "~> 4.9"
