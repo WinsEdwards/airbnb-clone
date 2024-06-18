@@ -16,6 +16,12 @@ gem "importmap-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Use OAuth generally
+gem "omniauth"
+
+# Use OAuth for Facebook as Log-in option
+gem "omniauth-facebook"
+
 # Use OAuth for Google as log-in option
 gem "omniauth-google-oauth2", "~> 1.1", ">= 1.1.1"
 gem "omniauth-rails_csrf_protection"

@@ -13,7 +13,9 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: '#FF5A5F',
-          dark: '#FF385C'
+          dark: '#FF385C',
+          facebook_blue: '#0866ff',
+          facebook_white: '#ffffff'
         }
       },
       fontFamily: {

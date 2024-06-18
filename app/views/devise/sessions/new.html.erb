@@ -1,26 +1,84 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <!-- Corrected opening tag for h3 -->
+    <h3 class="mt-6 text-center text-1xl font-bold leading-9 tracking-tight text-gray-900">Log in or sign up</h3>
+    <!-- h2 tag should be self-closing with <h2/> -->
+    <h2 class="mt-6 text-left text-2xl leading-9 tracking-tight text-gray-900">Welcome to Airbnb<sup>*</sup></h2>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
+    <div class="bg-white px-12 shadow sm:rounded-lg sm:px-12">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <div>
+        <%= f.label :name, class:"py-2 block text-med leading-6 text-gray-900" %>
+        <%= f.text_area :name, autofocus: true, autocomplete: "name", required: true, size: "70x1", class:"block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-med sm:leading-6" %>
+      </div>
+
+      <div>
+        <%= f.label :email, class:"py-2 block text-med leading-6 text-gray-900" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class:"block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-med sm:leading-6" %>
+      </div>
+
+      <div>
+        <%= f.label :password, class:"py-2 block text-med leading-6 text-gray-900" %>
+        <%= f.password_field :password, autocomplete: "new-password", minlength: 6, required: true, class:"block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-900 sm:text-med sm:leading-6" %>
+      </div>
+
+      <div class="py-3 flex items-center justify-between">
+        <% if devise_mapping.rememberable? %>
+          <div class="flex items-center">
+            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-primary focus:ring-gray-900">
+            <label for="remember-me" class="ml-3 block text-sm leading-6 text-gray-900">Remember me</label>
+          </div>
+        <% end %>  
+        <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <div class="py-3 flex items-center justify-between font-semibold text-primary hover:text-primary-dark">
+            <%= link_to "Forgot password?", new_password_path(resource_name) %>
+          </div>
+        <% end %>
+      </div>
+
+
+      <div class="py-6">
+        <%= f.submit "Continue", class:"flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text-med leading-6 text-white shadow-sm hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900" %>
+      </div>
+      <% end %>
+
+      <div>
+        <div class="relative">
+          <div class="absolute inset-0 flex items-center" aria-hidden="true">
+            <div class="w-full border-t border-gray-200"></div>
+          </div>
+          <div class="relative flex justify-center text-xs leading-6">
+            <span class="bg-white px-6 text-gray-900">or</span>
+          </div>
+        </div>
+      </div>
+
+    <div class="py-6">
+      <div class="flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-med text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent">
+        <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12.0003 4.75C13.7703 4.75 15.3553 5.36002 16.6053 6.54998L20.0303 3.125C17.9502 1.19 15.2353 0 12.0003 0C7.31028 0 3.25527 2.69 1.28027 6.60998L5.27028 9.70498C6.21525 6.86002 8.87028 4.75 12.0003 4.75Z" fill="#EA4335" />
+          <path d="M23.49 12.275C23.49 11.49 23.415 10.73 23.3 10H12V14.51H18.47C18.18 15.99 17.34 17.25 16.08 18.1L19.945 21.1C22.2 19.01 23.49 15.92 23.49 12.275Z" fill="#4285F4" />
+          <path d="M5.26498 14.2949C5.02498 13.5699 4.88501 12.7999 4.88501 11.9999C4.88501 11.1999 5.01998 10.4299 5.26498 9.7049L1.275 6.60986C0.46 8.22986 0 10.0599 0 11.9999C0 13.9399 0.46 15.7699 1.28 17.3899L5.26498 14.2949Z" fill="#FBBC05" />
+          <path d="M12.0004 24.0001C15.2404 24.0001 17.9654 22.935 19.9454 21.095L16.0804 18.095C15.0054 18.82 13.6204 19.245 12.0004 19.245C8.8704 19.245 6.21537 17.135 5.2654 14.29L1.27539 17.385C3.25539 21.31 7.3104 24.0001 12.0004 24.0001Z" fill="#34A853" />
+        </svg>
+        <span class="text-med leading-6">
+          <%= button_to "Continue with Google", user_google_oauth2_omniauth_authorize_path, method: :post, data: {turbo: false } %>
+        </span>
+      </div>
+
+      <div class="mt-3 flex w-full items-center justify-center gap-3 rounded-md bg-white px-3 py-2 text-med text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus-visible:ring-transparent">
+        <svg viewBox="0 0 36 36" class="h-5 w-5 x1lliihq x1k90msu x2h7rmj x1qfuztq x19dipnz">
+          <path class="fill-primary-facebook_blue" d="M20.181 35.87C29.094 34.791 36 27.202 36 18c0-9.941-8.059-18-18-18S0 8.059 0 18c0 8.442 5.811 15.526 13.652 17.471L14 34h5.5l.681 1.87Z"></path>
+          <path class="fill-primary-facebook_white xe3v8dz" d="M13.651 35.471v-11.97H9.936V18h3.715v-2.37c0-6.127 2.772-8.964 8.784-8.964 1.138 0 3.103.223 3.91.446v4.983c-.425-.043-1.167-.065-2.081-.065-2.952 0-4.09 1.116-4.09 4.025V18h5.883l-1.008 5.5h-4.867v12.37a18.183 18.183 0 0 1-6.53-.399Z"></path>
+          </svg>
+        <span class="text-med leading-6">
+          <%= button_to "Continue with Facebook", user_facebook_omniauth_authorize_path, method: :post, data: {turbo: false } %>
+        </span>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
