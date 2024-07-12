@@ -12,8 +12,8 @@
 #   price: 66666.66
 # })
 
-20.times do
-  Property.create!({
+20.times do |i|
+  property = Property.create!({
     name: Faker::App.name,
     headline: Faker::Coffee.blend_name,
     description: Faker::Lorem.paragraph(sentence_count: 2),
@@ -22,9 +22,11 @@
     city: Faker::Address.city,
     state: Faker::Address.state,
     country: Faker::Address.country,
-    image: Faker::LoremFlickr.image(size: "300x300", search_terms:['houses', 'rentals', 'vacation']),
+    image: URI.parse(Faker::LoremFlickr.image(size: "300x300", search_terms:['airbnb', 'rentals'])).open,
     price: Faker::Commerce.price(range: 5.0..9000.0),
     rating: Faker::Commerce.price(range: 3.0..5.0)
   })
-
+  
+  property.images.attach(io: File.open("./app/assets/images/airbnb_images/Property_#{i + 1}.jpg"), filename: property.name)
+  property.images.attach(io: File.open("./app/assets/images/airbnb_images/Property_#{i + 21}.jpg"), filename: property.name)
 end

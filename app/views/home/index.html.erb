@@ -5,7 +5,7 @@
       <% @properties.each do |property| %>
         <div class="group relative">
           <div class="aspect-[7/6] w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">     
-            <%= image_tag property.image, style: 'height:320;width:304;', alt: "Image of #{property.city}, #{property.country}" %>
+            <%= image_tag property.images.first, style: 'height:320;width:304;', alt: "Image of #{property.city}, #{property.country}" %>
           </div>
           <div class="mt-4 flex justify-between">
             <div>
