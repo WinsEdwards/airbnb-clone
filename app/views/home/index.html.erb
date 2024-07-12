@@ -2,24 +2,24 @@
   <div class="mx-auto max-w-2xl lg:max-w-7xl lg:px-8">
 
     <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-      <% 10.times do %>
+      <% @properties.each do |property| %>
         <div class="group relative">
-          <div class="aspect-[7/6] w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">
-            <img src="https://i.pcmag.com/imagery/roundups/05yHlr5hA2nXLOC4E7OwZkT-2..v1687971416.jpg" alt="Life-sized barbie house in pink, 3 levels with pool" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+          <div class="aspect-[7/6] w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75">     
+            <%= image_tag property.image, style: 'height:320;width:304;', alt: "Image of #{property.city}, #{property.country}" %>
           </div>
           <div class="mt-4 flex justify-between">
             <div>
               <h3 class="text-base font-semibold text-gray-700">
                 <a href="#">
                   <span aria-hidden="true" class="absolute inset-0"></span>
-                  Barbie Land, Mattel
+                  <%= "#{property.city}, #{property.country}" %>
                 </a>
               </h3>
               <p class="text-sm text-gray-500">∞ miles away</p>
               <p class="text-sm text-gray-500">Dec 15-18</p>
-              <p class="mt-1 text-sm text-gray-700"><span class="font-semibold">$35</span> night</p>
+              <p class="mt-1 text-sm text-gray-700"><span class="font-semibold"><%= property.price %></span> night</p>
             </div>
-            <p class="text-sm text-gray-700">★ 5.0</p>
+            <p class="text-sm text-gray-700">★ <%= property.rating %></p>
           </div>
         </div>
       <% end %>
